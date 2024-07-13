@@ -17,7 +17,7 @@ function Home() {
               </Link>
             </Col>
             <Col md={6} className="d-none d-md-block">
-              <img src="https://via.placeholder.com/500x300" alt="DDoS Protection" className="img-fluid rounded shadow" />
+              <img src="https://cdn.pixabay.com/photo/2023/05/26/00/23/hacker-8018467_960_720.png" alt="DDoS Protection" className="img-fluid rounded shadow" />
             </Col>
           </Row>
         </Container>
