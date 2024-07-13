@@ -1,41 +1,9 @@
-# Deployment Best Practices and Tips
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "build"
 
-1. Environment Variables:
-   - Use `.env` files for local development
-   - Set up environment variables in Netlify for production
-
-2. Error Logging:
-   - Implement error boundary in React
-   - Consider using a service like Sentry for error tracking
-
-3. Performance:
-   - Use React.lazy() for code-splitting
-   - Optimize images and assets
-   - Implement caching strategies
-
-4. SEO:
-   - Implement meta tags for SEO
-   - Create a sitemap.xml and robots.txt
-
-5. Accessibility:
-   - Ensure your app is accessible (use tools like axe for testing)
-
-6. Testing:
-   - Run all tests before deploying
-   - Consider setting up CI/CD pipelines
-
-7. Security:
-   - Keep all dependencies updated
-   - Implement proper authentication and authorization
-   - Use HTTPS for all communications
-
-8. Backup:
-   - Regularly backup your data and codebase
-
-9. Monitoring:
-   - Set up uptime monitoring
-   - Monitor performance metrics
-
-10. Documentation:
-    - Keep deployment documentation up-to-date
-    - Document any environment-specific configurations
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
