@@ -1,5 +1,6 @@
 # Dependencies
 /node_modules
+/**/node_modules
 /.pnp
 .pnp.js
 
@@ -26,7 +27,4 @@ yarn-error.log*
 
 # Cache files
 .cache
-**/node_modules/.cache
-
-# Ignore the entire frontend/node_modules directory
-/frontend/node_modules
+**/.cache
