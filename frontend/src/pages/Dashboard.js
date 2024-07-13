@@ -1,12 +1,9 @@
-// src/pages/Dashboard.js
 import React, { useState } from 'react';
 import { Row, Col, Card, Button, Table } from 'react-bootstrap';
 import { FaShieldAlt, FaUser, FaChartLine, FaExclamationTriangle } from 'react-icons/fa';
 import { Line } from 'react-chartjs-2'; // Assuming you are using react-chartjs-2 for the chart
-import Dashboard from './pages/Dashboard';
 
 const Dashboard = () => {
-    // Sample data and state hooks for demonstration purposes
     const [protectionStatus, setProtectionStatus] = useState(true);
     const toggleProtection = () => setProtectionStatus(!protectionStatus);
 
