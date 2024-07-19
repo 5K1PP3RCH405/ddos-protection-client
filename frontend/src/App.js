@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
 import Dashboard from './pages/Dashboard';
+import EmailVerification from './pages/EmailVerification'; // Add this import
 import { FaShieldAlt } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -38,6 +39,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/verify-email" element={<EmailVerification />} /> {/* Add this line */}
           </Routes>
         </Container>
 

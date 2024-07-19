@@ -7,3 +7,12 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[context.production.environment]
+  FRONTEND_URL = "https://shielduest.netlify.app"
+
+[context.deploy-preview.environment]
+  FRONTEND_URL = "https://deploy-preview-{PR_NUMBER}--shielduest.netlify.app"
+
+[context.branch-deploy.environment]
+  FRONTEND_URL = "https://{BRANCH}--shielduest.netlify.app"

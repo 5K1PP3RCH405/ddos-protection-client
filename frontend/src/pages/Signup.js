@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Card, Container, Row, Col, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaLock, FaShieldAlt } from 'react-icons/fa';
+import { signup } from '../api';
 
 function Signup() {
   const [name, setName] = useState('');
@@ -9,17 +10,26 @@ function Signup() {
   const [confirmEmail, setConfirmEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (email !== confirmEmail) {
       setError('Emails do not match.');
       return;
     }
-    // Implement signup logic here
-    console.log('Signup attempt with:', { name, email, password });
-    // For demonstration, let's set a success message
-    setError('Signup successful! Please check your email to verify your account.');
+    setIsLoading(true);
+    setError('');
+    try {
+      await signup({ name, email, password });
+      setError('Token sent, check your email');
+      navigate('/verify-email', { state: { email } });
+    } catch (err) {
+      setError(err.message || 'An error occurred during signup.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -39,7 +49,7 @@ function Signup() {
                 <FaShieldAlt size={50} className="text-primary" />
                 <h2 className="mt-2">Create an Account</h2>
               </div>
-              {error && <Alert variant={error.includes('successful') ? 'success' : 'danger'}>{error}</Alert>}
+              {error && <Alert variant={error.includes('Token sent') ? 'success' : 'danger'}>{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                   <Form.Label><FaUser className="me-2" />Full Name</Form.Label>
@@ -77,8 +87,8 @@ function Signup() {
                     required
                   />
                 </Form.Group>
-                <Button variant="primary" type="submit" className="w-100 mt-3">
-                  Sign Up
+                <Button variant="primary" type="submit" className="w-100 mt-3" disabled={isLoading}>
+                  {isLoading ? 'Signing Up...' : 'Sign Up'}
                 </Button>
               </Form>
             </Card.Body>
